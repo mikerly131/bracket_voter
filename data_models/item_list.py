@@ -18,7 +18,7 @@ class ItemList(Base):
 
     name: Mapped[str] = mapped_column(String(50), nullable=False)
     status: Mapped[str] = mapped_column(Enum("draft", "live"), default="draft", nullable=False)
-    type: Mapped[str]
+    category: Mapped[str]
     count: Mapped[int] = mapped_column(default=0, nullable=False)
     items: Mapped[list] = mapped_column(JSON)
     create_dt: Mapped[datetime] = mapped_column(default=datetime.now)

@@ -14,7 +14,8 @@ class Bracket(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     item_list_id: Mapped[int] = mapped_column(ForeignKey("item_list.id"))
-    user_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
+    list_creator: Mapped[int] = mapped_column(ForeignKey("user.id"))
+    bracketor: Mapped[int] = mapped_column(ForeignKey("user.id"))
 
     status: Mapped[str] = mapped_column(Enum("active", "complete"), default="active")
     round_64: Mapped[list] = mapped_column(JSON)
