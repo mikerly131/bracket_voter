@@ -1,5 +1,5 @@
 """
-This file creates the base sqlalchemy generic_models for the ORM
+This file creates the base sqlalchemy base class for the ORM and gathering metadata
 """
 from sqlalchemy.orm import DeclarativeBase
 

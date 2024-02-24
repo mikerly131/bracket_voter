@@ -14,21 +14,21 @@ app = FastAPI(docs_url=None, redoc_url=None)
 
 
 def main():
-    configure(dev_mode=True)
+    configure()
     uvicorn.run(app, host='127.0.0.1, port=8000')
 
 
-def configure(dev_mode: bool):
-    configure_templates(dev_mode)
+def configure():
+    configure_templates()
     configure_routes()
-    configure_db(dev_mode)
+    configure_db()
 
 
-def configure_db(dev_mode: bool):
+def configure_db():
     asyncio.run(init_db())
 
 
-def configure_templates(dev_mode: bool):
+def configure_templates():
     global template_engine
     template_engine = Jinja2Templates(directory="templates")
 
@@ -41,5 +41,5 @@ def configure_routes():
 if __name__ == '__main__':
     main()
 else:
-    configure(dev_mode=False)
+    configure()
 
