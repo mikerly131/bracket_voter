@@ -28,5 +28,5 @@ class Bracket(Base):
     update_dt: Mapped[datetime] = mapped_column(default=datetime.now)
 
     def __repr__(self) -> str:
-        return f"<List: {self.name}>"
+        return f"<Bracket: {self.id}>"
 

@@ -25,4 +25,4 @@ class ItemListRanking(Base):
     update_dt: Mapped[datetime] = mapped_column(default=datetime.now)
 
     def __repr__(self) -> str:
-        return f"<List: {self.id}>"
+        return f"<List Rank Tracker: {self.id}>"

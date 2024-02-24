@@ -1,7 +1,7 @@
 """
 Users create lists of items to be made into brackets for other users to fill out.
 They fill out brackets of their own lists and other users lists.
-They view composite rankings of a list - aka all filled out brackets.
+They view composite rankings of a list from all completely filled out brackets.
 """
 from base_model import Base
 from sqlalchemy.orm import Mapped, mapped_column
@@ -24,4 +24,4 @@ class User(Base):
     last_login: Mapped[datetime] = mapped_column(default=datetime.now)
 
     def __repr__(self) -> str:
-        return f"<List: {self.name}>"
+        return f"<User: {self.username}>"
