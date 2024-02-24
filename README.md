@@ -18,5 +18,8 @@ Honestly, still trying to figure out how I'm building this and if it fits any pa
 * View Model:  view_models
 
 ## About Rankings
-Composite Bracket: Winner is based of total count of winners from completed brackets. Ties go to the higher ranked (ex. 1 beats 4)
+Initial lists are ranked 1 to 64 by their creator
+Composite Bracket: Winner is based of total count of winners from completed brackets. 
+    Ties go to the higher ranked (ex. 1 beats 4)
 Overall Score: Points awarded to list items for each win, fibonacci style (ex. win in round of 32 = 2pts)
+    Score is averaged over number of brackets
