@@ -5,40 +5,22 @@ from passlib.handlers.sha2_crypt import sha512_crypt as crypto
 from sqlalchemy import select, func
 
 
-# sqlalchemy 2.0 with async sessions
-async def user_count() -> int:
-    async with database.get_async_session() as session:
-        query = select(func.count(User.id))
-        # returns a tuple, need to access with .scalar()
-        results = await session.execute(query)
-        return results.scalar()
-
-# # sqlalchemy 1.3 with sync session
-# def user_count() -> int:
-#     session = db_session.create_session()
-#
-#     try:
-#         return session.query(User).count()
-#     finally:
-#         session.close()
-
-
-async def create_account(name: str, email: str, password: str) -> User:
+# Using sqlalchemy 2.0 async sessions
+async def create_account(username: str, password: str) -> User:
     user = User()
-    user.email = email
-    user.name = name
-    user.hash_password = crypto.hash(password, rounds=113_249)
+    user.username = username
+    user.hash_password = crypto.hash(password, rounds=143_589)
 
-    async with db_session.create_async_session() as session:
+    async with database.get_async_session() as session:
         session.add(user)
         await session.commit()
 
     return user
 
 
-async def login_account(email: str, password: str) -> Optional[User]:
+async def login_account(username: str, password: str) -> Optional[User]:
     async with database.get_async_session() as session:
-        query = select(User).filter(User.email == email)
+        query = select(User).filter(User.username == username)
         result = await session.execute(query)
         user = result.scalar_one_or_none()
 
@@ -59,9 +41,9 @@ async def get_user_by_id(user_id: int) -> Optional[User]:
         return result.scalar_one_or_none()
 
 
-async def get_user_by_email(email: str) -> Optional[User]:
+async def get_user_by_username(username: str) -> Optional[User]:
     async with database.get_async_session() as session:
-        query = select(User).filter(User.email == email)
+        query = select(User).filter(User.username == username)
         # returns a tuple, need to access with .scalar()
         result = await session.execute(query)
         return result.scalar_one_or_none()

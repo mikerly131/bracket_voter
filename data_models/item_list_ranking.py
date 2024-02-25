@@ -1,7 +1,7 @@
 """
-The composite ranking of a list from the brackets that have been filled out for it.
+The composite ranking of a list from the bracket that have been filled out for it.
 Only needed for "live" lists of items to be ranked that have at least 1 bracket
-Only counts 'complete' brackets for calculating rankings and scoring items, so not using a relationship
+Only counts 'complete' bracket for calculating rankings and scoring items, so not using a relationship
 """
 from base_model import Base
 from sqlalchemy.orm import Mapped, mapped_column
